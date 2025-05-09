@@ -15,27 +15,27 @@ type FormatterOptions = {
 
 export function activate(context: ExtensionContext): void {
   languages.registerDocumentSemanticTokensProvider(
-    { language: 'pico-8', scheme: 'file' },
+    { language: 'picotron', scheme: 'file' },
     SemanticTokenProvider,
     legend,
   );
 
   languages.registerDocumentSemanticTokensProvider(
-    { language: 'pico-8-lua', scheme: 'file' },
+    { language: 'picotron-lua', scheme: 'file' },
     SemanticTokenProvider,
     legend,
   );
 
   const client = new LanguageClient(
-    'pico8-ls',
-    'PICO-8 LS',
+    'picotron-ls',
+    'Picotron LS',
     getServerOptions(context),
     getClientOptions(),
   );
 
   // register commands
-  registerFormattingCommand(client, context, 'pico8formatFile', false);
-  registerFormattingCommand(client, context, 'pico8formatFileSeparateLines', true);
+  registerFormattingCommand(client, context, 'picotronformatFile', false);
+  registerFormattingCommand(client, context, 'picotronformatFileSeparateLines', true);
 
   // starts both client and server
   const disposable = client.start();
@@ -69,13 +69,13 @@ function getClientOptions(): LanguageClientOptions {
   return {
     // Register the server for PICO-8 documents
     documentSelector: [
-      { scheme: 'file', language: 'pico-8' },
-      { scheme: 'file', language: 'pico-8-lua' },
+      { scheme: 'file', language: 'picotron' },
+      { scheme: 'file', language: 'picotron-lua' },
     ],
     synchronize: {
       // Notify the server about file changes to .pico8ls files in the workspace
       // (we'll use that file for config later on)
-      fileEvents: workspace.createFileSystemWatcher('**/.pico8ls'),
+      fileEvents: workspace.createFileSystemWatcher('**/.picotronls'),
     },
 
     errorHandler: {

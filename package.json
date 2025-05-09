@@ -1,6 +1,6 @@
 {
-	"name": "pico8-ls",
-	"description": "PICO-8 Language Server",
+	"name": "picotron-ls",
+	"description": "Picotron Language Server",
 	"icon": "img/icon.png",
 	"author": "JanPaul Bergeson",
 	"publisher": "PollywogGames",
@@ -8,14 +8,14 @@
 	"version": "0.5.7",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/japhib/pico8-ls"
+		"url": "https://github.com/japhib/picotron-ls"
 	},
 	"engines": {
 		"vscode": "^1.63.0"
 	},
 	"activationEvents": [
-		"onLanguage:pico-8",
-		"onLanguage:pico-8-lua"
+		"onLanguage:picotron",
+		"onLanguage:picotron-lua"
 	],
 	"main": "./client/out-min/main.js",
 	"categories": [
@@ -25,25 +25,25 @@
 	"contributes": {
 		"commands": [
 			{
-				"command": "extension.pico8formatFile",
-				"title": "PICO-8 LS: Format File"
+				"command": "extension.picotronformatFile",
+				"title": "Picotron LS: Format File"
 			},
 			{
-				"command": "extension.pico8formatFileSeparateLines",
-				"title": "PICO-8 LS: Format File - Each Statement on Separate Line"
+				"command": "extension.picotronformatFileSeparateLines",
+				"title": "Picotron LS: Format File - Each Statement on Separate Line"
 			}
 		],
 		"configuration": {
 			"type": "object",
-			"title": "PICO-8 LS configuration",
+			"title": "Picotron LS configuration",
 			"properties": {
-				"pico8-ls.maxNumberOfProblems": {
+				"picotron-ls.maxNumberOfProblems": {
 					"scope": "resource",
 					"type": "number",
 					"default": 100,
 					"description": "Controls the maximum number of problems produced by the server."
 				},
-				"pico8-ls.trace.server": {
+				"picotron-ls.trace.server": {
 					"scope": "window",
 					"type": "string",
 					"enum": [
@@ -58,15 +58,14 @@
 		},
 		"languages": [
 			{
-				"id": "pico-8",
+				"id": "picotron",
 				"aliases": [
-					"PICO-8",
-					"pico-8",
-					"PICO8",
-					"pico8"
+					"Picotron",
+					"picotron"
 				],
 				"extensions": [
-					".p8"
+					".p64",
+					".p64.png"
 				],
 				"configuration": "./syntaxes/language-configuration.json",
 				"icon": {
@@ -75,9 +74,9 @@
 				}
 			},
 			{
-				"id": "pico-8-lua",
+				"id": "picotron-lua",
 				"aliases": [
-					"PICO-8 Lua"
+					"Picotron Lua"
 				],
 				"extensions": [
 					".lua"
@@ -91,23 +90,23 @@
 		],
 		"grammars": [
 			{
-				"language": "pico-8",
-				"scopeName": "source.pico8",
-				"path": "./syntaxes/pico-8.tmLanguage.json"
+				"language": "picotron",
+				"scopeName": "source.picotron",
+				"path": "./syntaxes/picotron.tmLanguage.json"
 			},
 			{
-				"language": "pico-8-lua",
-				"scopeName": "source.pico8.lua",
-				"path": "./syntaxes/pico-8-lua.tmLanguage.json"
+				"language": "picotron-lua",
+				"scopeName": "source.picotron.lua",
+				"path": "./syntaxes/picotron-lua.tmLanguage.json"
 			}
 		],
 		"snippets": [
 			{
-				"language": "pico-8",
+				"language": "picotron",
 				"path": "./syntaxes/snippets.json"
 			},
 			{
-				"language": "pico-8-lua",
+				"language": "picotron-lua",
 				"path": "./syntaxes/snippets.json"
 			}
 		]

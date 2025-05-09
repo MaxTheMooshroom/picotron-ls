@@ -1,6 +1,6 @@
 {
-	"name": "pico8-ls-client",
-	"description": "PICO-8 LS VSCode Client",
+	"name": "picotron-ls-client",
+	"description": "Picotron LS VSCode Client",
 	"author": "JanPaul Bergeson",
 	"license": "MIT",
 	"version": "0.0.1",

@@ -163,7 +163,7 @@ async function createTextDocument(filePath: string) {
     return cached;
   }
 
-  const languageId = filePath.endsWith('p8') ? 'pico-8' : 'pico-8-lua';
+  const languageId = (filePath.endsWith('p64') || filePath.endsWith('p64.png')) ? 'picotron' : 'picotron-lua';
   const content = (await fs.promises.readFile(filePath)).toString();
   const result = TextDocument.create(uri, languageId, 0, content);
   return result;
@@ -791,7 +791,7 @@ connection.onExecuteCommand((params: ExecuteCommandParams) => {
   }
 });
 
-const formatterSupportedLanguages = [ 'pico-8', 'pico-8-lua' ];
+const formatterSupportedLanguages = [ 'picotron', 'picotron-lua' ];
 
 function executeCommand_formatDocument(documentUri: string, opts: FormatterOptions): TextEdit | null {
   const textDocument = documentTextCache.get(documentUri);
@@ -817,7 +817,7 @@ function executeCommand_formatDocument(documentUri: string, opts: FormatterOptio
   const formatResult = new Formatter(opts).formatChunk(
     parsedDocument.chunk,
     textDocument.getText(),
-    textDocument.languageId === 'pico-8-lua',
+    textDocument.languageId === 'picotron-lua',
   );
 
   if (!formatResult) {

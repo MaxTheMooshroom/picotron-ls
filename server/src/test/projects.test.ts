@@ -7,7 +7,7 @@ import { findProjects, ParsedDocumentsMap, ProjectDocument } from '../projects';
 // Creates a mock ProjectDocument that just has the specified includes
 function mockTextDocument(name: string, includes: string[]): ProjectDocument {
   return {
-    textDocument: TextDocument.create(name, 'pico-8-lua', 0, 'test file contents'),
+    textDocument: TextDocument.create(name, 'picotron-lua', 0, 'test file contents'),
     chunk: {
       block: {
         type: 'Block',
